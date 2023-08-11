@@ -1,6 +1,5 @@
 module "nexus" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "4.17.2"
 
   name   = "nexus"
   vpc_id = module.vpc.vpc_id
@@ -44,7 +43,6 @@ module "nexus" {
 
 module "client" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "4.17.2"
 
   name   = "client"
   vpc_id = module.vpc.vpc_id
