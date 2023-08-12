@@ -27,7 +27,7 @@ module "nexus" {
       from_port   = 8081
       to_port     = 8081
       protocol    = "tcp"
-      cidr_blocks = "10.0.101.12/32"
+      cidr_blocks = "${module.vpc.vpc_cidr_block}"
     }
   ]
 
@@ -53,7 +53,13 @@ module "client" {
       to_port     = 22
       protocol    = "tcp"
       cidr_blocks = "${var.myip}/32"
-    }
+    },
+    {
+      from_port   = 3389
+      to_port     = 3389
+      protocol    = "tcp"
+      cidr_blocks = "${var.myip}/32"
+    }    
   ]
 
   egress_with_cidr_blocks = [
