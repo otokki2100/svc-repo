@@ -11,8 +11,12 @@ variable "wiki_code_path_local" {
   description = "Wiki Code Path Local"
 }
 
-variable "wiki_code_path_remote" {
-  description = "Wiki Code Path Remote"
+variable "wiki_code_path_remote_1" {
+  description = "Wiki Code Path Remote 1"
+}
+
+variable "wiki_code_path_remote_2" {
+  description = "Wiki Code Path Remote 2"
 }
 
 variable "ec2_nexus" {

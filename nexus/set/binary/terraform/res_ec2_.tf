@@ -10,10 +10,10 @@ module "ec2_nexus" {
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
 
-  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/init/init-${var.ec2.dist}.sh.tpl", {
-    user   = var.ec2.user,
-    dist   = var.ec2.dist,
-    domain = var.ec2.domain,
+  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/init/init-${var.ec2_nexus.dist}.sh.tpl", {
+    user   = var.ec2_nexus.user,
+    dist   = var.ec2_nexus.dist,
+    domain = var.ec2_nexus.domain,
   })
 
   root_block_device = [{
@@ -40,10 +40,10 @@ module "ec2_client" {
   associate_public_ip_address = true
   private_ip                  = "10.0.101.12"
 
-  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/init/init-${var.ec2.dist}.sh.tpl", {
-    user   = var.ec2.user,
-    dist   = var.ec2.dist,
-    domain = var.ec2.domain,
+  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/init/init-${var.ec2_client.dist}.sh.tpl", {
+    user   = var.ec2_client.user,
+    dist   = var.ec2_client.dist,
+    domain = var.ec2_client.domain,
   })
 
   root_block_device = [{

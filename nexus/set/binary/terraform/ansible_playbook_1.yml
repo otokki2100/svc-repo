@@ -1,5 +1,5 @@
 ---
-- hosts: ec2-1
+- hosts: ec2-nexus
   tasks:
     - include_vars:
         file: ansible_variables.yml
@@ -30,3 +30,13 @@
 
     - ansible.builtin.shell:
         cmd: sh {{ var.wiki_code_path_remote_1 }}/{{ code }} {{ var.user_1 }} {{ var.dist_1 }} {{ var.domain_1 }}
+
+    - ansible.builtin.shell:
+        cmd: sleep 10
+        
+    - ansible.builtin.shell:
+        cmd: cat /opt/sonatype-work/nexus3/admin.password
+      register: command
+
+    - ansible.builtin.debug:
+        var: command.stdout

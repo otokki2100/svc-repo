@@ -8,6 +8,6 @@ resource "aws_route53_record" "domain_record" {
   name    = local.domain
   type    = "A"
   ttl     = 60
-  records = [module.ec2.public_ip]
+  records = [module.ec2_nexus.public_ip]
   allow_overwrite = true
 }

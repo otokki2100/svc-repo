@@ -1,0 +1,15 @@
+all:
+  hosts:
+    ec2-nexus:
+      ansible_host: 44.202.100.156
+      ansible_connection: ssh
+      ansible_user: centos
+      ansible_ssh_private_key_file: id_rsa
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+
+    ec2-client:
+      ansible_host: 54.172.185.248
+      ansible_connection: ssh
+      ansible_user: centos
+      ansible_ssh_private_key_file: id_rsa
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
