@@ -32,7 +32,7 @@
         cmd: sh {{ var.wiki_code_path_remote_1 }}/{{ code }} {{ var.user_1 }} {{ var.dist_1 }} {{ var.domain_1 }}
 
     - ansible.builtin.shell:
-        cmd: sleep 30
+        cmd: sleep 60
         
     - ansible.builtin.shell:
         cmd: cat /opt/sonatype-work/nexus3/admin.password

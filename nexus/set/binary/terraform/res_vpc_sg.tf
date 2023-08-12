@@ -24,6 +24,12 @@ module "nexus" {
       cidr_blocks = "${var.myip}/32"
     },
     {
+      from_port   = 5000
+      to_port     = 5000
+      protocol    = "tcp"
+      cidr_blocks = "${module.vpc.vpc_cidr_block}"
+    },
+    {
       from_port   = 8081
       to_port     = 8081
       protocol    = "tcp"
