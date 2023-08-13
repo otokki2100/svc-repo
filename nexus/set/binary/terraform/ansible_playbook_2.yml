@@ -10,10 +10,15 @@
         state: directory
         mode: "0755"
 
-    - ansible.builtin.copy:
+    - ansible.posix.synchronize:
         src: "{{ var.wiki_code_path_local }}/{{ item }}"
-        dest: "{{ var.wiki_code_path_remote_2 }}/{{ item }}"
-        recurse: yes
+        dest: "{{ var.wiki_code_path_remote_2 }}"
+        delete: true
+        recursive: true
+        rsync_opts:
+          - "--exclude=.git"
+          - "--exclude=.terraform"
+          - "--exclude=.terraform.lock.hcl"
       with_items:
         - cloud-aws
         - svc-iac
