@@ -10,9 +10,10 @@
         state: directory
         mode: "0755"
 
-    - git:
-        repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
+    - ansible.builtin.copy:
+        src: "{{ var.wiki_code_path_local }}/{{ item }}"
         dest: "{{ var.wiki_code_path_remote_2 }}/{{ item }}"
+        recurse: yes
       with_items:
         - cloud-aws
         - svc-iac
