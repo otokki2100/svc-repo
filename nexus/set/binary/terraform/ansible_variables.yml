@@ -1,0 +1,17 @@
+region: us-east-1
+myip: 180.71.22.215
+wiki_code_path_local: /Users/admin-mgmt/all/wiki/code
+wiki_code_path_remote_1: /home/centos/all/wiki/code
+wiki_code_path_remote_2: /home/centos/all/wiki/code
+
+instance_type_1: t3.medium
+ami_1: ami-002070d43b0a4f171
+user_1: centos
+dist_1: centos-07
+domain_1: ec2-1-centos-07
+
+instance_type_2: t3.nano
+ami_2: ami-002070d43b0a4f171
+user_2: centos
+dist_2: centos-07
+domain_2: ec2-2-centos-07
