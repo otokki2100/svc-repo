@@ -1,5 +1,5 @@
 ---
-- hosts: ec2-nexus
+- hosts: ec2-gitlab
   tasks:
     - include_vars:
         file: ansible_variables.yml
