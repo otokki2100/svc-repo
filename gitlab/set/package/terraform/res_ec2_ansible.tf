@@ -30,11 +30,11 @@ wiki_code_path_local: ${var.wiki_code_path_local}
 wiki_code_path_remote_1: ${var.wiki_code_path_remote_1}
 wiki_code_path_remote_2: ${var.wiki_code_path_remote_2}
 
-instance_type_1: ${var.ec2_nexus.instance_type}
-ami_1: ${var.ec2_nexus.ami}
-user_1: ${var.ec2_nexus.user}
-dist_1: ${var.ec2_nexus.dist}
-domain_1: ${var.ec2_nexus.domain}
+instance_type_1: ${var.ec2_gitlab.instance_type}
+ami_1: ${var.ec2_gitlab.ami}
+user_1: ${var.ec2_gitlab.user}
+dist_1: ${var.ec2_gitlab.dist}
+domain_1: ${var.ec2_gitlab.domain}
 
 instance_type_2: ${var.ec2_client.instance_type}
 ami_2: ${var.ec2_client.ami}

@@ -32,11 +32,13 @@
         cmd: sh {{ var.wiki_code_path_remote_1 }}/{{ code }} {{ var.user_1 }} {{ var.dist_1 }} {{ var.domain_1 }}
 
     - ansible.builtin.shell:
-        cmd: sleep 60
+        cmd: sleep 30
         
     - ansible.builtin.shell:
-        cmd: cat /opt/sonatype-work/nexus3/admin.password
+        cmd: cat /etc/gitlab/initial_root_password
       register: command
+      become: true
+      become_method: sudo
 
     - ansible.builtin.debug:
         var: command.stdout

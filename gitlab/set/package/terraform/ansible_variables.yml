@@ -1,0 +1,17 @@
+region: us-east-1
+myip: 180.71.22.215
+wiki_code_path_local: /Users/admin-mgmt/all/wiki/code
+wiki_code_path_remote_1: /home/ubuntu/all/wiki/code
+wiki_code_path_remote_2: /home/ubuntu/all/wiki/code
+
+instance_type_1: t3.medium
+ami_1: ami-0261755bbcb8c4a84
+user_1: ubuntu
+dist_1: ubuntu-20
+domain_1: ec2-1-ubuntu-20
+
+instance_type_2: t3.nano
+ami_2: ami-0261755bbcb8c4a84
+user_2: ubuntu
+dist_2: ubuntu-20
+domain_2: ec2-2-ubuntu-20
