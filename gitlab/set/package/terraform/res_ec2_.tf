@@ -10,10 +10,10 @@ module "ec2_gitlab" {
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
 
-  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/os/init-pub/init-${var.ec2_nexus.dist}.sh.tpl", {
-    user   = var.ec2_nexus.user,
-    dist   = var.ec2_nexus.dist,
-    domain = var.ec2_nexus.domain,
+  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/os/init-pub/init-${var.ec2_gitlab.dist}.sh.tpl", {
+    user   = var.ec2_gitlab.user,
+    dist   = var.ec2_gitlab.dist,
+    domain = var.ec2_gitlab.domain,
   })
 
   root_block_device = [{
