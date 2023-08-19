@@ -71,7 +71,7 @@ module "client" {
       to_port     = 3389
       protocol    = "tcp"
       cidr_blocks = "${var.myip}/32"
-    }    
+    }
   ]
 
   egress_with_cidr_blocks = [

@@ -1,6 +1,5 @@
 module "gitlab" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "4.17.2"
 
   name   = "gitlab"
   vpc_id = module.vpc.vpc_id
@@ -17,18 +16,18 @@ module "gitlab" {
       to_port     = 3389
       protocol    = "tcp"
       cidr_blocks = "${var.myip}/32"
-    },    
+    },
     {
       from_port   = 80
       to_port     = 80
       protocol    = "tcp"
-      cidr_blocks = "0.0.0.0/0"
-    },    
+      cidr_blocks = "${var.myip}/32"
+    },
     {
       from_port   = 443
       to_port     = 443
       protocol    = "tcp"
-      cidr_blocks = "0.0.0.0/0"
+      cidr_blocks = "${var.myip}/32"
     }
   ]
 
@@ -44,7 +43,6 @@ module "gitlab" {
 
 module "client" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "4.17.2"
 
   name   = "client"
   vpc_id = module.vpc.vpc_id
@@ -53,6 +51,12 @@ module "client" {
     {
       from_port   = 22
       to_port     = 22
+      protocol    = "tcp"
+      cidr_blocks = "${var.myip}/32"
+    },
+    {
+      from_port   = 3389
+      to_port     = 3389
       protocol    = "tcp"
       cidr_blocks = "${var.myip}/32"
     }

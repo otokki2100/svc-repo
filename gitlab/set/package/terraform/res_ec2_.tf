@@ -1,6 +1,5 @@
 module "ec2_gitlab" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "5.0.0"
 
   name                        = "ec2-gitlab"
   instance_type               = var.ec2_gitlab.instance_type
@@ -10,8 +9,11 @@ module "ec2_gitlab" {
   vpc_security_group_ids      = [module.gitlab.security_group_id]
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
-  user_data                   = templatefile(var.ec2_gitlab.user_data, {
-    domain                    = local.domain,
+
+  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/os/init-pub/init-${var.ec2_nexus.dist}.sh.tpl", {
+    user   = var.ec2_nexus.user,
+    dist   = var.ec2_nexus.dist,
+    domain = var.ec2_nexus.domain,
   })
 
   root_block_device = [{
@@ -28,7 +30,6 @@ module "ec2_gitlab" {
 
 module "ec2_client" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "5.0.0"
 
   name                        = "ec2-client"
   instance_type               = var.ec2_client.instance_type
@@ -37,8 +38,20 @@ module "ec2_client" {
   subnet_id                   = module.vpc.public_subnets[0]
   vpc_security_group_ids      = [module.client.security_group_id]
   associate_public_ip_address = true
-  private_ip                  = "10.0.101.13"
-  user_data                   = file(var.ec2_client.user_data)
+  private_ip                  = "10.0.101.12"
+
+  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/os/init-pri/init-${var.ec2_client.dist}.sh.tpl", {
+    user   = var.ec2_client.user,
+    dist   = var.ec2_client.dist,
+    domain = var.ec2_client.domain,
+  })
+
+  root_block_device = [{
+    volume_size = "100"
+    volume_type = "gp3"
+    encrypted             = true
+    delete_on_termination = true    
+  }]
 
   tags = {
     Name = "ec2-client"

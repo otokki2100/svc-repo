@@ -1,0 +1,42 @@
+---
+- hosts: ec2-nexus
+  tasks:
+    - include_vars:
+        file: ansible_variables.yml
+        name: var
+
+    - file:
+        path: /home/{{ var.user_1 }}/all/wiki/code
+        state: directory
+        mode: "0755"
+
+    - git:
+        repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
+        dest: "{{ var.wiki_code_path_remote_1 }}/{{ item }}"
+      with_items:
+        - cloud-aws
+        - svc-iac
+        - svc-web
+        - svc-conn
+        - svc-repo
+        - lang-code
+
+    - ansible.builtin.shell:
+        cmd: echo "{{ var.wiki_code_path_remote_1 }}/{{ code }} {{ var.user_1 }} {{ var.dist_1 }} {{ var.domain_1 }}"
+      register: command
+
+    - ansible.builtin.debug:
+        var: command.stdout
+
+    - ansible.builtin.shell:
+        cmd: sh {{ var.wiki_code_path_remote_1 }}/{{ code }} {{ var.user_1 }} {{ var.dist_1 }} {{ var.domain_1 }}
+
+    - ansible.builtin.shell:
+        cmd: sleep 60
+        
+    - ansible.builtin.shell:
+        cmd: cat /opt/sonatype-work/nexus3/admin.password
+      register: command
+
+    - ansible.builtin.debug:
+        var: command.stdout

@@ -52,7 +52,7 @@ module "ec2_client" {
     encrypted             = true
     delete_on_termination = true    
   }]
-  
+
   tags = {
     Name = "ec2-client"
   }
